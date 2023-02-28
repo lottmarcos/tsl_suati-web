@@ -3,7 +3,7 @@ import {
   getFills,
   getMembersHours,
   getSprints,
-  getSubsystemData,
+  getData,
   getTasks,
   insertSprint,
   insertTask,
@@ -13,7 +13,7 @@ import {
 
 const router = express.Router();
 
-router.post("/getSubsystemData", getSubsystemData);
+router.post("/getData", getData);
 router.post("/getMembersHours", getMembersHours);
 router.post("/getSprints", getSprints);
 router.post("/getTasks", getTasks);

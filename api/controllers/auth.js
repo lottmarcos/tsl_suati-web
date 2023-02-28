@@ -57,6 +57,14 @@ export const register = (req, res) => {
 export const getSystems = (req, res) => {
   // Caio
   //TODO: pegar todos sistemas
+  const q = "SELECT * FROM systems";
+
+  db.query(q, (err, data) => {
+    if (err) return res.status(500).json(err);
+    if (data.length === 0)
+      return res.status(404).json("Nenhum sistema encontrado.");
+    res.send(data);
+  });
 };
 
 export const getSubsystems = (req, res) => {
@@ -67,6 +75,14 @@ export const getSubsystems = (req, res) => {
 export const getRoles = (req, res) => {
   // Caio
   //TODO: selecionar funções
+  const q = "SELECT * FROM roles";
+
+  db.query(q, (err, data) => {
+    if (err) return res.status(500).json(err);
+    if (data.length === 0)
+      return res.status(404).json("Nenhum sistema encontrado.");
+    res.send(data);
+  });
 };
 
 export const login = (req, res) => {
