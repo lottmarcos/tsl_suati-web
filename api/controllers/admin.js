@@ -1,6 +1,7 @@
 import { db } from "../connect.js";
 
 export const insertSprint = (req, res) => {
+  // Caio
   //TODO: Inserir sprint no DB (óbvio)
 };
 
@@ -25,13 +26,16 @@ export const insertMicro = (req, res) => {
 };
 
 export const insertComplement = (req, res) => {
+  // Luiza
   //TODO: Mesma coisa que os de cima mas com complemento
 };
 
 export const updateMember = (req, res) => {
+  // Caio
   //TODO: Atualizar membro já existente
 };
 
 export const deleteMember = (req, res) => {
+  // Luiza
   //TODO: Deletar membro já existente
 };

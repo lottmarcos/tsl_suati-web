@@ -1,6 +1,7 @@
 import { db } from "../connect.js";
 
 export const getTeamData = (req, res) => {
+  // Luiza
   /*TODO: muito complexo pra comentar mas here we go
 
     Função que retorna um objeto que tem este formato:
@@ -13,5 +14,6 @@ export const getTeamData = (req, res) => {
 };
 
 export const getMembers = (req, res) => {
+  // Caio
   //TODO: Selecionar membros de um sistema agrupados por subsistema
 };

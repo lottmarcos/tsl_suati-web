@@ -55,14 +55,17 @@ export const register = (req, res) => {
 };
 
 export const getSystems = (req, res) => {
+  // Caio
   //TODO: pegar todos sistemas
 };
 
 export const getSubsystems = (req, res) => {
+  // Luiza
   //TODO: selecionar subsistemas de um certo sistema
 };
 
 export const getRoles = (req, res) => {
+  // Caio
   //TODO: selecionar funções
 };
 
