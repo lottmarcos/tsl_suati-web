@@ -1,14 +1,12 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as yup from "yup";
-import React, { FC } from "react";
-
-interface FormValues {
-  username: string;
-  password: string;
-}
+import React, { FC, useContext } from "react";
+import { AuthContext } from "../../../contexts/AuthContext";
+import { AuthContextType, LoginFormValues } from "../types";
 
 export const Login: FC = () => {
-  const initialValues: FormValues = { username: "", password: "" };
+  const { login } = useContext(AuthContext) as AuthContextType;
+  const initialValues: LoginFormValues = { username: "", password: "" };
 
   const validationLogin = yup.object().shape({
     username: yup.string().required("Este campo é obrigatório"),
@@ -18,8 +16,8 @@ export const Login: FC = () => {
       .required("Este campo é obrigatório"),
   });
 
-  const handleLogin = (values: FormValues) => {
-    console.log(values);
+  const handleLogin = (values: LoginFormValues) => {
+    login(values);
   };
 
   return (
