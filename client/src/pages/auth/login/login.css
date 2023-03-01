@@ -1,0 +1,27 @@
+.loginPageDiv {
+  background-color: #d1dad1;
+  padding: 30px;
+  border-radius: 20px;
+  display: flex;
+  align-items: flex end;
+  justify-content: center;
+}
+.loginField {
+  width: 466px;
+  height: 54px;
+  background-color: #d2d2d2 !important;
+  border-radius: 10px;
+  border: solid #d2d2d2;
+}
+
+.loginButton {
+  background-color: #43f340;
+  height: 54px !important;
+  width: 251px !important;
+  border: solid #43f340;
+  border-radius: 10px;
+  margin-top: 20px;
+  color: black;
+  font-size: 28px;
+  font-family: var(--font);
+}
