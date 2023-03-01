@@ -20,7 +20,7 @@ export const RouterApp = () => {
         <Route path="/cadastro" element={<Register />} />
         <Route path="/administrador" element={<Admin />} />
         <Route path="/time" element={<Team />} />
-        <Route path="/membro:id" element={<Member />} />
+        <Route path="/membro/:id" element={<Member />} />
         <Route path="/subsistema/:id" element={<Subsystem />} />
         <Route path="/sistema/:id" element={<System />} />
         <Route path="/financeiro" element={<Finances />} />

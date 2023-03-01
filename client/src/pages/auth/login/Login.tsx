@@ -18,8 +18,12 @@ export const Login: FC = () => {
       .required("Este campo é obrigatório"),
   });
 
-  const handleLogin = (values: LoginFormValues) => {
-    login(values);
+  const handleLogin = async (values: LoginFormValues) => {
+    try {
+      await login(values);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
