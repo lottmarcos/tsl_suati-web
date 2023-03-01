@@ -1,8 +1,10 @@
-import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as yup from "yup";
 import React, { FC, useContext } from "react";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+
 import { AuthContext } from "../../../contexts/AuthContext";
 import { AuthContextType, LoginFormValues } from "../types";
+import "../../../css/styles.css";
 
 export const Login: FC = () => {
   const { login } = useContext(AuthContext) as AuthContextType;
@@ -21,23 +23,34 @@ export const Login: FC = () => {
   };
 
   return (
-    <div>
-      <h1>Login</h1>
+    <div className="loginPageDiv">
+      <h1 className="loginTitle">Login</h1>
       <Formik
         initialValues={initialValues}
         onSubmit={(values) => handleLogin(values)}
         validationSchema={validationLogin}
       >
-        <Form>
+        <Form className="loginForm">
           <div>
-            <Field name="username" placeholder="Nome de usuário" />
+            <Field
+              name="username"
+              placeholder="Nome de usuário"
+              className="loginField"
+            />
             <ErrorMessage component="span" name="username" />
           </div>
           <div>
-            <Field type="password" name="password" placeholder="Senha" />
+            <Field
+              type="password"
+              name="password"
+              placeholder="Senha"
+              className="loginField"
+            />
             <ErrorMessage component="span" name="password" />
           </div>
-          <button type="submit">Entrar</button>
+          <button className="loginButton" type="submit">
+            Entrar
+          </button>
         </Form>
       </Formik>
     </div>
