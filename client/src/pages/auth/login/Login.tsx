@@ -1,8 +1,15 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as yup from "yup";
-import React from "react";
+import React, { FC } from "react";
 
-export const Login = () => {
+interface FormValues {
+  username: string;
+  password: string;
+}
+
+export const Login: FC = () => {
+  const initialValues: FormValues = { username: "", password: "" };
+
   const validationLogin = yup.object().shape({
     username: yup.string().required("Este campo é obrigatório"),
     password: yup
@@ -11,12 +18,16 @@ export const Login = () => {
       .required("Este campo é obrigatório"),
   });
 
+  const handleLogin = (values: FormValues) => {
+    console.log(values);
+  };
+
   return (
     <div>
       <h1>Login</h1>
       <Formik
-        initialValues={{}}
-        onSubmit={(values) => console.log(values)}
+        initialValues={initialValues}
+        onSubmit={(values) => handleLogin(values)}
         validationSchema={validationLogin}
       >
         <Form>
