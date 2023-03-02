@@ -5,6 +5,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import { AuthContext } from "../../../contexts/AuthContext";
 import { AuthContextType, LoginFormValues } from "../types";
 import "../../../css/styles.css";
+import { FormikInputField } from "../../../common/FormikInputField/FormikInputField";
 
 export const Login: FC = () => {
   const { login } = useContext(AuthContext) as AuthContextType;
@@ -35,23 +36,16 @@ export const Login: FC = () => {
         validationSchema={validationLogin}
       >
         <Form className="loginForm">
-          <div>
-            <Field
-              name="username"
-              placeholder="Nome de usuário"
-              className="loginField"
-            />
-            <ErrorMessage component="span" name="username" />
-          </div>
-          <div>
-            <Field
-              type="password"
-              name="password"
-              placeholder="Senha"
-              className="loginField"
-            />
-            <ErrorMessage component="span" name="password" />
-          </div>
+          <FormikInputField
+            type="username"
+            name="username"
+            placeholder="Nome de usuário"
+          />
+          <FormikInputField
+            type="password"
+            name="password"
+            placeholder="Senha"
+          />
           <button className="loginButton" type="submit">
             Entrar
           </button>
