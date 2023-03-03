@@ -3,7 +3,6 @@
 ## About
 
 This is a web project to improve people's management at Tesla UFMG team, by making tasks management, tracking hours worked, grouping systems and subsystems, organizing the financial team and the team's fridge.
-
 <br>
 
 This application was created by Caio, Marcos and Luiza and it was released by 2023.
