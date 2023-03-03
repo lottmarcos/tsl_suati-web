@@ -1,6 +1,5 @@
 import React from "react";
-import { Field, ErrorMessage } from "formik";
-import "./FormikInputField.css";
+import { ErrorMessage, Field } from "formik";
 
 export type FormikInputFieldProps = {
   type?: string;
@@ -14,14 +13,16 @@ export const FormikInputField: React.FC<FormikInputFieldProps> = ({
   placeholder,
 }) => {
   return (
-    <div>
+    <div className="FormikInputDiv">
       <Field
         type={type}
         name={name}
         placeholder={placeholder}
         className="FormikInputField"
       />
-      <ErrorMessage component="span" name={name} />
+      <div className="FormikErrorMessage">
+        <ErrorMessage name={name} />
+      </div>
     </div>
   );
 };
