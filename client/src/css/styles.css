@@ -1,18 +1,15 @@
+@import url("../common/FormikInputField/FormikInputField.css");
+@import url("../common/SubmitButton/SubmitButton.css");
 @import url("../pages/auth/login/login.css");
-
-:root {
-  --background: linear-gradient(#06b602, #0000);
-  --font: "Montserrat", sans-serif;
-}
 
 html {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--background);
+  background: linear-gradient(#06b602, #0000);
   background-color: black;
   background-repeat: space;
-  font-family: var(--font);
+  font-family: "Montserrat", sans-serif;
   font-size: 16px;
   font-weight: 400;
   height: 100%;
