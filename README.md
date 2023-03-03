@@ -6,6 +6,7 @@ This is a web project to improve people's management at Tesla UFMG team, by maki
 <br>
 
 This application was created by Caio, Marcos and Luiza and it was released by 2023.
+<br>
 The technology used contain:
 
 - Axios;
