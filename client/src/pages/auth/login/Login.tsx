@@ -8,7 +8,7 @@ import { AuthContextType, LoginFormValues } from "../types";
 import { FormikInputField } from "../../../common/FormikInputField/FormikInputField";
 import { SubmitButton } from "../../../common/SubmitButton/SubmitButton";
 import { AuthPageTitle } from "../components/AuthPageTitle/AuthPageTitle";
-import { LoginLinks } from "../components/LoginLinks/LoginLinks";
+import { AuthPageLinks } from "../components/AuthPageLinks/AuthPageLinks";
 
 export const Login: FC = () => {
   const { login } = useContext(AuthContext) as AuthContextType;
@@ -31,7 +31,7 @@ export const Login: FC = () => {
   };
 
   return (
-    <section className="LoginSection">
+    <section className="AuthPageBox">
       <AuthPageTitle label="Login" />
       <Formik
         initialValues={initialValues}
@@ -52,7 +52,12 @@ export const Login: FC = () => {
           <SubmitButton label="Entrar" type="submit" />
         </Form>
       </Formik>
-      <LoginLinks />
+      <AuthPageLinks
+        href="/cadastro"
+        text="Não possui uma conta?"
+        link="Crie uma conta."
+      />
+      <AuthPageLinks href="###" text="Sem acesso?" link="Recupere sua conta." />
     </section>
   );
 };

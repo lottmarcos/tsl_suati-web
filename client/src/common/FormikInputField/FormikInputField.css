@@ -14,8 +14,8 @@
   font-size: 16px;
   font-weight: 500;
   font-family: "Montserrat", sans-serif;
-  width: 380px;
-  height: 32px;
+  width: 380px !important;
+  height: 32px !important;
   background-color: #fff3f3;
   border-radius: 10px;
   border: solid #fff3f3;
@@ -25,7 +25,6 @@
   position: relative;
   top: 1px;
   color: rgba(0, 0, 0, 0.7);
-  padding-left: 22px;
   font-size: 16px;
   font-weight: 400;
   font-family: "Montserrat", sans-serif;

@@ -1,6 +1,7 @@
 @import url("../common/FormikInputField/FormikInputField.css");
+@import url("../common/FormikSelectField/FormikSelectField.css");
 @import url("../common/SubmitButton/SubmitButton.css");
-@import url("../pages/auth/login/login.css");
+@import url("../pages/auth/components/AuthPage.css");
 
 html {
   display: flex;

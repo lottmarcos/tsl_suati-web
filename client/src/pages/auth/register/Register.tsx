@@ -1,8 +1,13 @@
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Formik, Form } from "formik";
 import * as yup from "yup";
-import React, { FC } from "react";
+import { FC } from "react";
 
 import { RegisterFormValues } from "../types";
+import { AuthPageTitle } from "../components/AuthPageTitle/AuthPageTitle";
+import { FormikInputField } from "../../../common/FormikInputField/FormikInputField";
+import { SubmitButton } from "../../../common/SubmitButton/SubmitButton";
+import { FormikSelectField } from "../../../common/FormikSelectField/FormikSelectField";
+import { AuthPageLinks } from "../components/AuthPageLinks/AuthPageLinks";
 
 export const Register: FC = () => {
   const initialValues: RegisterFormValues = {
@@ -31,54 +36,47 @@ export const Register: FC = () => {
   };
 
   return (
-    <div>
-      <h1>Cadastro</h1>
+    <section className="AuthPageBox" id="BigAuthBox">
+      <AuthPageTitle label="Cadastro" />
       <Formik
         initialValues={initialValues}
         onSubmit={(values) => handleRegister(values)}
         validationSchema={validationRegister}
       >
         <Form>
-          <div>
-            <Field name="name" placeholder="Nome e sobrenome" />
-            <ErrorMessage component="span" name="name" />
-          </div>
-          <div>
-            <Field name="username" placeholder="Nome de usuário" />
-            <ErrorMessage component="span" name="username" />
-          </div>
-          <div>
-            <Field type="email" name="email" placeholder="E-mail" />
-            <ErrorMessage component="span" name="email" />
-          </div>
-          <div>
-            <Field as="select" name="system" />
-          </div>
-          <div>
-            <Field as="select" name="subsystem" />
-          </div>
-          <div>
-            <Field as="select" name="role" />
-          </div>
-          <div>
-            <Field name="admission" placeholder="Mês e ano de admissão" />
-            <ErrorMessage component="span" name="admission" />
-          </div>
-          <div>
-            <Field type="password" name="password" placeholder="Senha" />
-            <ErrorMessage component="span" name="password" />
-          </div>
-          <div>
-            <Field
-              type="password"
-              name="confirmPassword"
-              placeholder="Confirmar senha"
-            />
-            <ErrorMessage component="span" name="email" />
-          </div>
-          <button type="submit">Cadastrar</button>
+          <FormikInputField
+            type="name"
+            name="name"
+            placeholder="Nome e sobrenome"
+          />
+          <FormikInputField
+            type="username"
+            name="username"
+            placeholder="Nome de usuário"
+          />
+          <FormikInputField type="email" name="email" placeholder="E-mail" />
+          <FormikSelectField name="system" placeholder="Sistema" />
+          <FormikSelectField name="subsystem" placeholder="Subsistema" />
+          <FormikSelectField name="role" placeholder="Cargo" />
+          <FormikInputField
+            name="admission"
+            placeholder="Mês e ano de admissão"
+          />
+          <FormikInputField
+            type="password"
+            name="password"
+            placeholder="Senha"
+          />
+
+          <FormikInputField
+            type="password"
+            name="confirmPassword"
+            placeholder="Confirmar senha"
+          />
+          <SubmitButton label="Cadastrar" type="submit" />
         </Form>
       </Formik>
-    </div>
+      <AuthPageLinks href="/login" text="Já possui conta?" link="Entre." />
+    </section>
   );
 };
