@@ -1,11 +1,11 @@
-.LoginLinksSection {
+.AuthPageLinksSection {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
-.LoginLinksText {
+.AuthPageLinksText {
   color: black;
   margin: 10px 0;
   justify-self: flex-end;

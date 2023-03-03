@@ -1,13 +1,8 @@
 import React from "react";
 import { ErrorMessage, Field } from "formik";
+import { FormikFieldProps } from "../types";
 
-export type FormikInputFieldProps = {
-  type?: string;
-  name: string;
-  placeholder: string;
-};
-
-export const FormikInputField: React.FC<FormikInputFieldProps> = ({
+export const FormikInputField: React.FC<FormikFieldProps> = ({
   type,
   name,
   placeholder,
