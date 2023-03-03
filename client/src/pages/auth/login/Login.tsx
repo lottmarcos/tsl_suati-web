@@ -1,11 +1,14 @@
 import * as yup from "yup";
-import React, { FC, useContext } from "react";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { FC, useContext } from "react";
+import { Formik, Form } from "formik";
 
+import "../../../css/styles.css";
 import { AuthContext } from "../../../contexts/AuthContext";
 import { AuthContextType, LoginFormValues } from "../types";
-import "../../../css/styles.css";
 import { FormikInputField } from "../../../common/FormikInputField/FormikInputField";
+import { SubmitButton } from "../../../common/SubmitButton/SubmitButton";
+import { AuthPageTitle } from "../components/AuthPageTitle/AuthPageTitle";
+import { LoginLinks } from "../components/LoginLinks/LoginLinks";
 
 export const Login: FC = () => {
   const { login } = useContext(AuthContext) as AuthContextType;
@@ -28,14 +31,14 @@ export const Login: FC = () => {
   };
 
   return (
-    <div className="loginPageDiv">
-      <h1 className="loginTitle">Login</h1>
+    <section className="LoginSection">
+      <AuthPageTitle label="Login" />
       <Formik
         initialValues={initialValues}
         onSubmit={(values) => handleLogin(values)}
         validationSchema={validationLogin}
       >
-        <Form className="loginForm">
+        <Form>
           <FormikInputField
             type="username"
             name="username"
@@ -46,11 +49,10 @@ export const Login: FC = () => {
             name="password"
             placeholder="Senha"
           />
-          <button className="loginButton" type="submit">
-            Entrar
-          </button>
+          <SubmitButton label="Entrar" type="submit" />
         </Form>
       </Formik>
-    </div>
+      <LoginLinks />
+    </section>
   );
 };

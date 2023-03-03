@@ -1,0 +1,17 @@
+.AuthPageTitleSection {
+  width: 100% !important;
+  height: 150px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 50px;
+}
+
+.AuthPageTitle {
+  justify-self: flex-end;
+  width: 280px !important;
+  font-size: 28px;
+  font-weight: 400;
+  font-family: "Montserrat", sans-serif;
+  border-bottom: 1px solid black;
+}
