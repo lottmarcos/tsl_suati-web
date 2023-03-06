@@ -41,6 +41,14 @@ export const insertComplement = (req, res) => {
 export const getMembers = (req, res) => {
   //Caio
   //TODO: Pegar membros que o user pode editar
+  const q = "SELECT * FROM users";
+
+  db.query(q, (err, data) => {
+    if (err) return res.status(500).json(err);
+    if (data.length === 0)
+      return res.status(404).json("Nenhum membro encontrado!");
+    res.send(data);
+  });
 };
 
 export const getMemberData = (req, res) => {

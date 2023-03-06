@@ -35,6 +35,39 @@ export const getFills = (req, res) => {
   //TODO: Selecionar preenchimentos de um membro de acordo com o período selecionado pelo usuário
 };
 
+export const getMacros = (req, res) => {
+  const q = "SELECT * FROM macros";
+
+  db.query(q, (err, data) => {
+    if (err) return res.status(500).json(err);
+    if (data.length === 0)
+      return res.status(404).json("Nenhum macro encontrado.");
+    res.send(data);
+  });
+};
+
+export const getMicros = (req, res) => {
+  const q = "SELECT * FROM micros";
+
+  db.query(q, (err, data) => {
+    if (err) return res.status(500).json(err);
+    if (data.length === 0)
+      return res.status(404).json("Nenhum macro encontrado.");
+    res.send(data);
+  });
+};
+
+export const getComplements = (req, res) => {
+  const q = "SELECT * FROM complements";
+
+  db.query(q, (err, data) => {
+    if (err) return res.status(500).json(err);
+    if (data.length === 0)
+      return res.status(404).json("Nenhum macro encontrado.");
+    res.send(data);
+  });
+};
+
 export const insertFill = (req, res) => {
   // Caio
   //TODO: Inserir preenchimento (FALTA FAZER A DATA FUNCIONAR)

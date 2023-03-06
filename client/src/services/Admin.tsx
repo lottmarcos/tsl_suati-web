@@ -20,3 +20,7 @@ export const insertMicro = (name: string) => {
 export const insertComplement = (name: string) => {
   axios.post("http://localhost:8800/api/admin/insertComplement", { name });
 };
+
+export const getMembers = () => {
+  return axios.get("http://localhost:8800/api/admin/getMembers");
+};

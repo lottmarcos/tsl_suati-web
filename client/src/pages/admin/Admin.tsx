@@ -1,10 +1,11 @@
 import { Form, Formik } from "formik";
-import React from "react";
+import { useState, useEffect } from "react";
 import * as yup from "yup";
 
-import { MacrosFormValues, MembersFormValues, SprintFormValues } from "./types";
+import { MacrosFormValues, IMember, SprintFormValues } from "./types";
 import { FormikInputField } from "../../common/FormikInputField/FormikInputField";
 import {
+  getMembers,
   insertComplement,
   insertMacro,
   insertMicro,
@@ -13,7 +14,15 @@ import {
 import { FormikSelectField } from "../../common/FormikSelectField/FormikSelectField";
 import { SubmitButton } from "../../common/SubmitButton/SubmitButton";
 
+interface IState {
+  members: IMember[];
+}
+
 export const Admin = () => {
+  const [state, setState] = useState<IState>({
+    members: [] as IMember[],
+  });
+
   const sprintInitialValues: SprintFormValues = {} as SprintFormValues;
 
   const validationSprint = yup.object().shape({});
@@ -36,14 +45,18 @@ export const Admin = () => {
     }
   };
 
-  const membersInitialValues: MembersFormValues = {} as MembersFormValues;
+  const membersInitialValues: IMember = {} as IMember;
 
   const validationMembers = yup.object().shape({});
 
-  const handleMembers = (values: MembersFormValues) => {
+  const handleMembers = (values: IMember) => {
     console.log("got to handle members, shit! and these are my values: ");
     console.log(values);
   };
+
+  useEffect(() => {
+    getMembers().then((res) => console.log(res));
+  }, []);
 
   return (
     <div>
@@ -97,11 +110,7 @@ export const Admin = () => {
           validationSchema={validationMembers}
         >
           <Form>
-            <FormikSelectField
-              name="member"
-              placeholder="Membro"
-              options={[]}
-            />
+            <FormikSelectField name="id" placeholder="Membro" options={[]} />
             <FormikSelectField name="role" placeholder="Cargo" options={[]} />
             <FormikSelectField
               name="system"

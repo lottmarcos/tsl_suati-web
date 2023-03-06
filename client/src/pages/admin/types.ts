@@ -8,8 +8,8 @@ export interface MacrosFormValues {
   name: string;
 }
 
-export interface MembersFormValues {
-  member: number;
+export interface IMember {
+  id: number;
   job: number;
   system: number;
   subsystem: number;
