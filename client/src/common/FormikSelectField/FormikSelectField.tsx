@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { ErrorMessage, Field } from "formik";
-import { FormikFieldProps } from "../types";
-import { Form } from "react-bootstrap";
 
-export const FormikSelectField: React.FC<FormikFieldProps> = ({
-  type,
+import { FormikSelectProps } from "../types";
+
+export const FormikSelectField: React.FC<FormikSelectProps> = ({
   name,
   placeholder,
+  options,
 }) => {
   const [isPlaceHolder, setIsPlaceHolder] = useState(true);
 
@@ -24,17 +24,29 @@ export const FormikSelectField: React.FC<FormikFieldProps> = ({
         placeholder={placeholder}
         className="FormikInputField"
       /> */}
-      <Form.Select
+      <Field
+        as="select"
+        name={name}
+        className={isPlaceHolder ? "PlaceholderField" : "SelectField"}
+      >
+        <option value="" disabled selected>
+          {placeholder}
+        </option>
+        {options.map((option) => (
+          <option value={option.id}>{option.name}</option>
+        ))}
+      </Field>
+      {/*<Form.Select
         onChange={onChange}
         className={isPlaceHolder ? "PlaceholderField" : "SelectField"}
       >
         <option value="" disabled selected>
           {placeholder}
         </option>
-        <option onChange={onChange}>teste2</option>
-        <option onChange={onChange}>teste3</option>
-        <option onChange={onChange}>teste4</option>
-      </Form.Select>
+        {options.map((option) => (
+          <option value={option.id}>{option.name}</option>
+        ))}
+        </Form.Select>*/}
       <div className="FormikErrorMessage">
         <ErrorMessage name={name} />
       </div>

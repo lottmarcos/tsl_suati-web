@@ -4,6 +4,7 @@ import jwt from "jsonwebtoken";
 import util from "util";
 
 export const register = (req, res) => {
+  //funcionando!!
   var id;
 
   const q = "SELECT * FROM users WHERE username = ?";
@@ -17,14 +18,14 @@ export const register = (req, res) => {
 
     const query = util.promisify(db.query).bind(db);
     const q2 =
-      "INSERT INTO jobs (userId ,systemId, subsystemId, roleId) VALUE (?)";
+      "INSERT INTO jobs (userId ,systemId, subsystemId, roleId, admission) VALUE (?)";
 
     let values2;
 
     (async () => {
       try {
         await query(
-          "INSERT INTO users (`username`,`email`,`password`,`name`) VALUES ('" +
+          "INSERT INTO users (`username`,`email`,`password`,`name`,`school`) VALUES ('" +
             req.body.username +
             "','" +
             req.body.email +
@@ -32,6 +33,8 @@ export const register = (req, res) => {
             hashedPassword +
             "','" +
             req.body.name +
+            "','" +
+            req.body.school +
             "')"
         );
       } finally {
@@ -41,7 +44,13 @@ export const register = (req, res) => {
               "SELECT id FROM users WHERE username='" + req.body.username + "'"
             );
             id = teste[0].id;
-            values2 = [id, req.body.system, req.body.subsystem, req.body.role];
+            values2 = [
+              id,
+              req.body.system,
+              req.body.subsystem,
+              req.body.role,
+              req.body.admission,
+            ];
           } finally {
             db.query(q2, [values2], (err) => {
               if (err) return res.status(500).json(err);
@@ -55,6 +64,7 @@ export const register = (req, res) => {
 };
 
 export const getSystems = (req, res) => {
+  //funcionando!!
   // Caio
   //TODO: pegar todos sistemas
   const q = "SELECT * FROM systems";
@@ -73,6 +83,7 @@ export const getSubsystems = (req, res) => {
 };
 
 export const getRoles = (req, res) => {
+  //funcionando!!
   // Caio
   //TODO: selecionar funções
   const q = "SELECT * FROM roles";
@@ -86,6 +97,7 @@ export const getRoles = (req, res) => {
 };
 
 export const login = (req, res) => {
+  //funcionando!!
   const { username, password } = req.body;
   const q = "SELECT * FROM users WHERE username=? ";
 

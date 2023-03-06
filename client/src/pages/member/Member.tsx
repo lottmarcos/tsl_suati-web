@@ -1,26 +1,28 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import axios from "axios";
+
+import { MemberService } from "../../services/Member";
+import { IMember } from "./types";
+
+interface IState {
+  member: IMember;
+}
 
 export const Member = () => {
-  const [member, setMember] = useState({});
+  const [state, setState] = useState<IState>({
+    member: {} as IMember,
+  });
 
   const params = useParams();
   const id = params.id;
 
-  const fetchMember = (id) => {
-    axios
-      .post("http://localhost:8800/api/member/getData", {
-        id: id,
-      })
-      .then((res) => {
-        setMember(res.data);
-      });
-  };
-
   useEffect(() => {
-    fetchMember(id);
+    MemberService.fetchMember(id).then((res) =>
+      setState({ ...state, member: res.data })
+    );
   }, [id]);
+
+  const { member } = state;
 
   return (
     <div>
@@ -28,6 +30,8 @@ export const Member = () => {
       <h2>Subsistema: {member?.subsystemName}</h2>
       <h2>Sistema: {member?.systemName}</h2>
       <h2>Cargo: {member?.roleName}</h2>
+      <h2>Curso: {member?.school}</h2>
+      <h2>Admissão: {member?.admission}</h2>
     </div>
   );
 };

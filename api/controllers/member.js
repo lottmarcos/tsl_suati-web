@@ -6,7 +6,7 @@ export const getData = (req, res) => {
 
   const { id } = req.body;
   const q =
-    "SELECT u.name, j.subsystemId, subsys.name as subsystemName, j.systemId, sys.name as systemName, j.roleId , r.name as roleName FROM users AS u " +
+    "SELECT u.name, j.subsystemId, subsys.name as subsystemName, j.systemId, sys.name as systemName, j.roleId , r.name as roleName, u.school, j.admission FROM users AS u " +
     "INNER JOIN jobs AS j ON u.id = j.userId " +
     "INNER JOIN subsystems AS subsys ON subsys.id = j.subsystemId " +
     "INNER JOIN systems AS sys ON sys.id = j.systemId " +
@@ -68,7 +68,7 @@ export const insertFill = (req, res) => {
 
 export const deleteFill = (req, res) => {
   // Luiza
-  //TODO: Inserir preenchimento
+  //TODO: Deletar preenchimento
 };
 
 export const insertSprint = (req, res) => {
