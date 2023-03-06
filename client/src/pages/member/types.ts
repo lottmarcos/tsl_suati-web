@@ -9,3 +9,8 @@ export interface IMember {
   school: string;
   admission: string;
 }
+
+export interface IFillType {
+  id: number;
+  name: string;
+}

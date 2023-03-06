@@ -28,6 +28,21 @@ export const getMembers = (req, res) => {
     if (err) return res.status(500).json(err);
     if (data.length === 0)
       return res.status(404).json("Nenhum subsistema encontrado");
-    res.send(data);
+
+    console.log(data);
+    data[0].usersIds = data[0].usersIds.split(",").map(Number);
+    data[0].usersNames = data[0].usersNames.split(",");
+
+    data[0].members = [];
+
+    for (let i = 0; i < data[0].usersIds.length; i++) {
+      let member = { id: data[0].usersIds[i], name: data[0].usersNames[i] };
+      data[0].members.push(member);
+    }
+
+    delete data[0].usersIds;
+    delete data[0].usersNames;
+
+    res.send(data[0]);
   });
 };

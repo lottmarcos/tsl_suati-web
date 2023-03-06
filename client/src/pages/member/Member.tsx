@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import { MemberService } from "../../services/Member";
+import { FillPopup } from "./components/FillPopup";
 import { IMember } from "./types";
 
 interface IState {
@@ -32,6 +33,7 @@ export const Member = () => {
       <h2>Cargo: {member?.roleName}</h2>
       <h2>Curso: {member?.school}</h2>
       <h2>Admissão: {member?.admission}</h2>
+      <FillPopup />
     </div>
   );
 };
