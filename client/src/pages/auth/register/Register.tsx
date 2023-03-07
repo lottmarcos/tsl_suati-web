@@ -63,7 +63,7 @@ export const Register: FC = () => {
   }, []);
 
   return (
-    <section className="AuthPageBox" id="BigAuthBox">
+    <section className="AuthPageBox">
       <AuthPageTitle label="Cadastro" />
       <Formik
         initialValues={initialValues}
