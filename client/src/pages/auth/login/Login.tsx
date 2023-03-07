@@ -33,6 +33,8 @@ export const Login: FC = () => {
     }
   };
 
+  console.log(validationLogin);
+
   return (
     <section className="AuthPageBox">
       <AuthPageTitle label="Login" />
