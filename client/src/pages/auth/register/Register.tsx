@@ -10,12 +10,24 @@ import { FormikInputField } from "../../../common/FormikInputField/FormikInputFi
 import { SubmitButton } from "../../../common/SubmitButton/SubmitButton";
 import { FormikSelectField } from "../../../common/FormikSelectField/FormikSelectField";
 import { AuthPageLinks } from "../components/AuthPageLinks/AuthPageLinks";
-import { getRoles, getSystems } from "../../../services/Register";
+import {
+  getRoles,
+  getSubsystems,
+  getSystems,
+} from "../../../services/Register";
 
 export const Register: FC = () => {
   const navigate = useNavigate();
 
+  const [system, setSystem] = useState(1);
+
   const [systems, setSystems] = useState([
+    {
+      id: 1,
+      name: "",
+    },
+  ]);
+  const [subsystems, setSubsystems] = useState([
     {
       id: 1,
       name: "",
@@ -57,10 +69,20 @@ export const Register: FC = () => {
     }
   };
 
+  const handleSystem = (values: RegisterFormValues) => {
+    if (values.system != undefined) {
+      setSystem(values.system);
+    }
+  };
+
   useEffect(() => {
     getSystems().then((res) => setSystems(res.data));
     getRoles().then((res) => setRoles(res.data));
   }, []);
+
+  useEffect(() => {
+    getSubsystems(system).then((res) => setSubsystems(res.data));
+  }, [system]);
 
   return (
     <section className="AuthPageBox">
@@ -70,46 +92,59 @@ export const Register: FC = () => {
         onSubmit={(values) => handleRegister(values)}
         validationSchema={validationRegister}
       >
-        <Form>
-          <FormikInputField
-            type="text"
-            name="name"
-            placeholder="Nome e sobrenome"
-          />
-          <FormikInputField
-            type="text"
-            name="username"
-            placeholder="Nome de usuário"
-          />
-          <FormikInputField type="email" name="email" placeholder="E-mail" />
-          <FormikSelectField
-            name="system"
-            placeholder="Sistema"
-            options={systems}
-          />
-          <FormikSelectField
-            name="subsystem"
-            placeholder="Subsistema"
-            options={[]}
-          />
-          <FormikSelectField name="role" placeholder="Cargo" options={roles} />
-          <FormikInputField
-            name="admission"
-            placeholder="Mês e ano de admissão"
-          />
-          <FormikInputField
-            type="password"
-            name="password"
-            placeholder="Senha"
-          />
+        {({ values }) => {
+          handleSystem(values);
+          return (
+            <Form>
+              <FormikInputField
+                type="text"
+                name="name"
+                placeholder="Nome e sobrenome"
+              />
+              <FormikInputField
+                type="text"
+                name="username"
+                placeholder="Nome de usuário"
+              />
+              <FormikInputField
+                type="email"
+                name="email"
+                placeholder="E-mail"
+              />
+              <FormikSelectField
+                name="system"
+                placeholder="Sistema"
+                options={systems}
+              />
+              <FormikSelectField
+                name="subsystem"
+                placeholder="Subsistema"
+                options={[]}
+              />
+              <FormikSelectField
+                name="role"
+                placeholder="Cargo"
+                options={roles}
+              />
+              <FormikInputField
+                name="admission"
+                placeholder="Mês e ano de admissão"
+              />
+              <FormikInputField
+                type="password"
+                name="password"
+                placeholder="Senha"
+              />
 
-          <FormikInputField
-            type="password"
-            name="confirmPassword"
-            placeholder="Confirmar senha"
-          />
-          <SubmitButton label="Cadastrar" type="submit" />
-        </Form>
+              <FormikInputField
+                type="password"
+                name="confirmPassword"
+                placeholder="Confirmar senha"
+              />
+              <SubmitButton label="Cadastrar" type="submit" />
+            </Form>
+          );
+        }}
       </Formik>
       <AuthPageLinks href="/login" text="Já possui conta?" link="Entre." />
     </section>
