@@ -36,7 +36,7 @@ export const insertMicro = (req, res) => {
 export const insertComplement = (req, res) => {
   // Luiza
   //TODO: Mesma coisa que os de cima mas com complemento
-  //funcionando!
+  
   const { name } = req.body;
   const q = "INSERT INTO complements (name) VALUES (?)";
 
