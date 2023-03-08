@@ -82,10 +82,10 @@ export const updateMember = (req, res) => {
 export const deleteMember = (req, res) => {
   // Luiza
   //TODO: Deletar membro já existente
-  const { name } = req.body;
-  const q = "DELETE FROM members WHERE memberName = ?";
+  const { id } = req.body;
+  const q = "DELETE FROM users WHERE id = ?";
 
-  db.query(q, name, (err) => {
+  db.query(q, id, (err) => {
     if (err) return res.status(500).json(err);
     return res.status(200).json("Deletado com sucesso!");
   });
