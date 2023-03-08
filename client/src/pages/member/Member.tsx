@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import { MemberService } from "../../services/Member";
@@ -9,7 +9,7 @@ interface IState {
   member: IMember;
 }
 
-export const Member = () => {
+export const Member: FC = () => {
   const [state, setState] = useState<IState>({
     member: {} as IMember,
   });
