@@ -80,6 +80,13 @@ export const getSystems = (req, res) => {
 export const getSubsystems = (req, res) => {
   // Luiza
   //TODO: selecionar subsistemas de um certo sistema
+  const q = "SELECT subsystems FROM systems WHERE systemName = ?";
+  db.query(q, (err, data) => {
+    if (err) return res.status(500).json(err);
+    if (data.length === 0)
+      return res.status(404).json("Nenhum sistema encontrado.");
+    res.send(data);
+  });
 };
 
 export const getRoles = (req, res) => {

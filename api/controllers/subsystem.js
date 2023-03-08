@@ -35,6 +35,15 @@ export const getSprints = (req, res) => {
 export const getTasks = (req, res) => {
   // Luiza
   //TODO: Selecionar tasks do subsistema
+  const { id } = req.body;
+  const q = "SELECT * FROM tasks WHERE userId = 8;";
+
+  db.query(q, id, (err, data) => {
+    if (err) return res.status(500).json(err);
+    if (data.length === 0)
+      return res.status(404).json("Nenhuma tarefa encontrada.");
+    res.send(data);
+  });
 };
 
 export const getFills = (req, res) => {
@@ -58,6 +67,13 @@ export const insertSprint = (req, res) => {
   // Luiza
   //igual de  membros so copiar
   //TODO: Inserir sprint no DB (óbvio)
+  const { name } = req.body;
+  const q = "INSERT INTO sprint (name) VALUES (?)";
+
+  db.query(q, name, (err) => {
+    if (err) return res.status(500).json(err);
+    return res.status(200).json("Inserido com sucesso!");
+  });
 };
 
 export const updateSprint = (req, res) => {
@@ -68,6 +84,13 @@ export const updateSprint = (req, res) => {
 
 export const insertTask = (req, res) => {
   // Luiza
+  const { name } = req.body;
+  const q = "INSERT INTO task (name) VALUES (?)";
+
+  db.query(q, name, (err) => {
+    if (err) return res.status(500).json(err);
+    return res.status(200).json("Inserido com sucesso!");
+  });
 };
 
 export const updateTask = (req, res) => {
