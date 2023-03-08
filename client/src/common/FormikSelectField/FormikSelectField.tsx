@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ErrorMessage, Field } from "formik";
+import { ErrorMessage, Field, Formik } from "formik";
 
 import { FormikSelectProps } from "../types";
 
@@ -20,6 +20,8 @@ export const FormikSelectField: React.FC<FormikSelectProps> = ({
         as="select"
         name={name}
         className={isPlaceHolder ? "PlaceholderField" : "SelectField"}
+        id={name}
+        onChange={onChange}
       >
         <option value="" disabled selected>
           {placeholder}
@@ -28,7 +30,6 @@ export const FormikSelectField: React.FC<FormikSelectProps> = ({
           <option value={option.id}>{option.name}</option>
         ))}
       </Field>
-
       <div className="FormikErrorMessage">
         <ErrorMessage name={name} />
       </div>

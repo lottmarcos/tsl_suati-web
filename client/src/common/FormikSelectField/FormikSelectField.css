@@ -28,6 +28,11 @@ option[value=""][disabled] {
   display: none;
 }
 
+.PlaceholderField:focus {
+  outline: none;
+  background-color: #fff3f3;
+}
+
 .SelectField:focus {
   outline: none;
   background-color: #fff3f3;
