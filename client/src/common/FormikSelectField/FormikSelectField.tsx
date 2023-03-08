@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ErrorMessage, Field, Formik } from "formik";
+import { ErrorMessage, Field } from "formik";
 
 import { FormikSelectProps } from "../types";
 
