@@ -72,12 +72,12 @@ export const Register: FC = () => {
       >
         <Form>
           <FormikInputField
-            type="name"
+            type="text"
             name="name"
             placeholder="Nome e sobrenome"
           />
           <FormikInputField
-            type="username"
+            type="text"
             name="username"
             placeholder="Nome de usuário"
           />

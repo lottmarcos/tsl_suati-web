@@ -16,14 +16,6 @@ export const FormikSelectField: React.FC<FormikSelectProps> = ({
 
   return (
     <div className="FormikInputDiv">
-      {/* <Field
-        as="select"
-        type={type}
-        name={name}
-        values={mockedData}
-        placeholder={placeholder}
-        className="FormikInputField"
-      /> */}
       <Field
         as="select"
         name={name}
@@ -36,17 +28,7 @@ export const FormikSelectField: React.FC<FormikSelectProps> = ({
           <option value={option.id}>{option.name}</option>
         ))}
       </Field>
-      {/*<Form.Select
-        onChange={onChange}
-        className={isPlaceHolder ? "PlaceholderField" : "SelectField"}
-      >
-        <option value="" disabled selected>
-          {placeholder}
-        </option>
-        {options.map((option) => (
-          <option value={option.id}>{option.name}</option>
-        ))}
-        </Form.Select>*/}
+
       <div className="FormikErrorMessage">
         <ErrorMessage name={name} />
       </div>
