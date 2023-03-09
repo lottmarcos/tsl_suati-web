@@ -19,26 +19,10 @@ import {
 export const Register: FC = () => {
   const navigate = useNavigate();
 
-  const [system, setSystem] = useState(1);
-
-  const [systems, setSystems] = useState([
-    {
-      id: 1,
-      name: "",
-    },
-  ]);
-  const [subsystems, setSubsystems] = useState([
-    {
-      id: 1,
-      name: "",
-    },
-  ]);
-  const [roles, setRoles] = useState([
-    {
-      id: 1,
-      name: "",
-    },
-  ]);
+  const [currentSystemID, setCurrentSystemID] = useState(-1);
+  const [systems, setSystems] = useState([]);
+  const [subsystems, setSubsystems] = useState([]);
+  const [roles, setRoles] = useState([]);
 
   const initialValues: RegisterFormValues = {} as RegisterFormValues;
 
@@ -69,20 +53,52 @@ export const Register: FC = () => {
     }
   };
 
-  const handleSystem = (values: RegisterFormValues) => {
-    if (values.system != undefined) {
-      setSystem(values.system);
-    }
-  };
-
   useEffect(() => {
     getSystems().then((res) => setSystems(res.data));
     getRoles().then((res) => setRoles(res.data));
   }, []);
 
   useEffect(() => {
-    getSubsystems(system).then((res) => setSubsystems(res.data));
-  }, [system]);
+    getSubsystems(currentSystemID).then((res) => setSubsystems(res.data));
+  }, [currentSystemID]);
+
+  const [currentSystemOption, setCurrentSystemOption] = useState({
+    name: "",
+    id: 0,
+  });
+  const [disabledSelects, setDisabledSelects] = useState(true);
+
+  const getCurrentSystemOption = () => {
+    var selectSystem = document.getElementById(
+      "SelectSystem"
+    ) as HTMLSelectElement;
+
+    var index = selectSystem.selectedIndex;
+
+    setCurrentSystemOption({
+      name: selectSystem.options[index].text,
+      id: Number(selectSystem.options[index].value),
+    });
+  };
+
+  const [isPlaceholderActive, setIsPlaceholderActive] = useState(true);
+
+  const resetCurrentSubsystemOption = () => {
+    var selectSubsystem = document.getElementById(
+      "SelectSubsystem"
+    ) as HTMLSelectElement;
+
+    selectSubsystem.value = "0";
+  };
+
+  useEffect(() => {
+    if (currentSystemOption.id !== 0) {
+      setCurrentSystemID(currentSystemOption.id);
+      setDisabledSelects(false);
+      resetCurrentSubsystemOption();
+      setIsPlaceholderActive(true);
+    }
+  }, [currentSystemOption]);
 
   return (
     <section className="AuthPageBox">
@@ -92,8 +108,7 @@ export const Register: FC = () => {
         onSubmit={(values) => handleRegister(values)}
         validationSchema={validationRegister}
       >
-        {({ values }) => {
-          handleSystem(values);
+        {() => {
           return (
             <Form>
               <FormikInputField
@@ -112,18 +127,27 @@ export const Register: FC = () => {
                 placeholder="E-mail"
               />
               <FormikSelectField
+                id="SelectSystem"
                 name="system"
                 placeholder="Sistema"
                 options={systems}
+                isDisabled={false}
+                onSelect={() => getCurrentSystemOption()}
               />
               <FormikSelectField
+                id="SelectSubsystem"
                 name="subsystem"
                 placeholder="Subsistema"
-                options={[]}
+                isDisabled={disabledSelects}
+                isPlaceholderActive={isPlaceholderActive}
+                onSelect={() => setIsPlaceholderActive(false)}
+                options={subsystems}
               />
               <FormikSelectField
+                id="SelectRole"
                 name="role"
                 placeholder="Cargo"
+                isDisabled={disabledSelects}
                 options={roles}
               />
               <FormikInputField

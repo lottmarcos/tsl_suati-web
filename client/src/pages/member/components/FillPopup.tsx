@@ -49,16 +49,19 @@ export const FillPopup: React.FC = () => {
             placeholder="Horário Término"
           />
           <FormikSelectField
+            id="SelectMacro"
             name="macro"
             placeholder="Macro"
             options={macros}
           />
           <FormikSelectField
+            id="SelectMicro"
             name="micro"
             placeholder="Micro"
             options={micros}
           />
           <FormikSelectField
+            id="SelectComplemento"
             name="complemento"
             placeholder="Complemento"
             options={[]}

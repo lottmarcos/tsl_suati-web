@@ -89,6 +89,7 @@ export const Admin = () => {
         >
           <Form>
             <FormikSelectField
+              id="SelectType"
               name="type"
               placeholder="Tipo"
               options={[
@@ -110,14 +111,26 @@ export const Admin = () => {
           validationSchema={validationMembers}
         >
           <Form>
-            <FormikSelectField name="id" placeholder="Membro" options={[]} />
-            <FormikSelectField name="role" placeholder="Cargo" options={[]} />
             <FormikSelectField
+              id="SelectMember"
+              name="id"
+              placeholder="Membro"
+              options={[]}
+            />
+            <FormikSelectField
+              id="SelectRole"
+              name="role"
+              placeholder="Cargo"
+              options={[]}
+            />
+            <FormikSelectField
+              id="SelectSystem"
               name="system"
               placeholder="Sistema"
               options={[]}
             />
             <FormikSelectField
+              id="SelectSubsystem"
               name="subsystem"
               placeholder="Subsistema"
               options={[]}
