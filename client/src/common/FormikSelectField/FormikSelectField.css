@@ -20,6 +20,6 @@
   background-color: #fff3f3;
 }
 
-div[value="0"][disabled] {
+option[value="0"][disabled] {
   display: none;
 }
