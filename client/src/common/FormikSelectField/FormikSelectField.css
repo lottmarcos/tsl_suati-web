@@ -1,15 +1,5 @@
 .PlaceholderField {
-  color: rgba(0, 0, 0, 0.7);
-  padding-left: 22px;
-  font-size: 16px;
-  font-weight: 500;
-  font-family: "Montserrat", sans-serif;
-  width: 410px;
-  height: 40px;
-  background-color: #fff3f3;
-  border-radius: 10px;
-  border: solid #fff3f3;
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  color: rgba(0, 0, 0, 0.7) !important;
 }
 .SelectField {
   color: black;
@@ -24,16 +14,12 @@
   border: solid #fff3f3;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
-option[value="0"][disabled] {
-  display: none;
-}
-
-.PlaceholderField:focus {
-  outline: none;
-  background-color: #fff3f3;
-}
 
 .SelectField:focus {
   outline: none;
   background-color: #fff3f3;
+}
+
+div[value="0"][disabled] {
+  display: none;
 }

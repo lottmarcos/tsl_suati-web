@@ -27,7 +27,9 @@ export const FormikSelectField: React.FC<FormikSelectProps> = ({
         disabled={isDisabled}
         as="select"
         name={name}
-        className={isPlaceHolder ? "PlaceholderField" : "SelectField"}
+        className={
+          isPlaceHolder ? "SelectField PlaceholderField" : "SelectField"
+        }
         id={id}
         onChange={onChange}
       >
@@ -35,7 +37,9 @@ export const FormikSelectField: React.FC<FormikSelectProps> = ({
           {placeholder}
         </option>
         {options.map((option) => (
-          <option value={option.id}>{option.name}</option>
+          <option className="option" value={option.id}>
+            {option.name}
+          </option>
         ))}
       </Field>
       <div className="FormikErrorMessage">
